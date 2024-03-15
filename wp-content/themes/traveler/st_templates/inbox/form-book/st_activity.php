@@ -1,8 +1,4 @@
 <?php
-if(New_Layout_Helper::isNewLayout()){
-    echo st()->load_template('inbox/form-book/st_activity_new');
-    return;
-}
 wp_enqueue_script('custom_activity_inbox');
 wp_enqueue_script('st-qtip');
 $booking_data = $message_data['booking_data'];

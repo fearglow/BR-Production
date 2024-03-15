@@ -148,7 +148,16 @@ wp_enqueue_script( 'bootstrap-timepicker.js' );
 									$car_name = ( intval( $car_id ) > 0 ) ? get_the_title( $car_id ) : '';
 
 								?>
-								<input id="car_id" type="hidden" name="item_id" value="<?php echo esc_attr( $car_id ); ?>" data-post-type="st_cars" class="form-control custom-form-control st_post_select_ajax " data-pl-name="<?php echo esc_attr( $car_name ); ?>" data-user-id="<?php echo get_current_user_id(); ?>">
+								<select id="car_id"
+									type="hidden"
+									name="item_id"
+									value="<?php echo esc_attr( $car_id ); ?>"
+									data-post-type="st_cars"
+									class="form-control custom-form-control st_post_select_ajax "
+									data-pl-name="<?php echo esc_attr( $car_name ); ?>"
+									data-user-id="<?php echo get_current_user_id(); ?>"
+								>
+								</select>
 								</div>
 							</div>
 						</div>

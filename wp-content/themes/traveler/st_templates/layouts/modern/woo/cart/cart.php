@@ -67,7 +67,7 @@ do_action('woocommerce_before_cart'); ?>
 
 								<td class="product-remove <?php echo esc_attr(apply_filters('woocommerce_cart_item_class', 'cart_item', $cart_item, $cart_item_key)); ?>">
 									<?php
-										do_action('st_before_cart_item_' . $post_type);
+										do_action('st_before_cart_item_' . $post_type, $post_type);
 										echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 											'woocommerce_cart_item_remove_link',
 											sprintf(

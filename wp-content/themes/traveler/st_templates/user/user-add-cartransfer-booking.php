@@ -143,21 +143,37 @@ wp_enqueue_script( 'bootstrap-timepicker.js' );
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label for="pick_up" class="head_bol"><?php _e( 'Pick Up', 'traveler' ); ?> <span class="text-small text-danger">(*)</span>:</label>
-								<?php
-									$pick_up      = isset( $_POST['transfer_from'] ) ? intval( $_POST['transfer_from'] ) : '';
-									$pick_up_name = ( intval( $pick_up ) > 0 ) ? get_the_title( $pick_up ) : '';
-								?>
-									<input id="transfer_from" type="hidden" name="transfer_from" value="" data-post-type="car_transfer" class="form-control custom-form-control st_transfer_from_select_ajax " data-pl-name="">
+									<?php
+										$pick_up      = isset( $_POST['transfer_from'] ) ? intval( $_POST['transfer_from'] ) : '';
+										$pick_up_name = ( intval( $pick_up ) > 0 ) ? get_the_title( $pick_up ) : '';
+									?>
+									<select id="transfer_from"
+										type="hidden"
+										name="transfer_from"
+										value=""
+										data-post-type="car_transfer"
+										class="form-control custom-form-control st_transfer_from_select_ajax "
+										data-pl-name=""
+									>
+									</select>
 								</div>
 							</div>
 							<div class="col-xs-12 col-sm-6">
 								<div class="form-group">
 									<label  for="drop_off" class="head_bol"><?php _e( 'Drop Off', 'traveler' ); ?> <span class="text-small text-danger">(*)</span>:</label>
-								<?php
-									$drop_off      = isset( $_POST['transfer_to'] ) ? intval( $_POST['transfer_to'] ) : '';
-									$drop_off_name = ( intval( $drop_off ) > 0 ) ? get_the_title( $drop_off ) : '';
-								?>
-									<input id="transfer_to" type="hidden" name="transfer_to" value="" data-post-type="car_transfer" class="form-control custom-form-control st_transfer_to_select_ajax " data-pl-name="">
+									<?php
+										$drop_off      = isset( $_POST['transfer_to'] ) ? intval( $_POST['transfer_to'] ) : '';
+										$drop_off_name = ( intval( $drop_off ) > 0 ) ? get_the_title( $drop_off ) : '';
+									?>
+									<select id="transfer_to"
+										type="hidden"
+										name="transfer_to"
+										value=""
+										data-post-type="car_transfer"
+										class="form-control custom-form-control st_transfer_to_select_ajax "
+										data-pl-name=""
+									>
+									</select>
 								</div>
 							</div>
 						</div>

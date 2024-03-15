@@ -6940,6 +6940,13 @@ $spCol: var(--main-color, #5191FA);
         &:last-child {
             border-bottom: 0px;
         }
+		&.onsale {
+			text-decoration: line-through;
+			font-size: 13px;
+			line-height: 20px;
+			color: var(--grey-color, #5E6D77);
+			border: none;
+		}
     }
 }
 

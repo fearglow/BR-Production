@@ -5920,6 +5920,13 @@
 .st-related-service-new .item:last-child {
   border-bottom: 0px;
 }
+.st-related-service-new .item.onsale {
+  text-decoration: line-through;
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--grey-color, #5E6D77);
+  border: none;
+}
 
 /* Mega menu */
 #header .header {

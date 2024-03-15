@@ -32,7 +32,7 @@ jQuery(function($) {
                     action: 'st_get_availability_tour_frontend',
                     start: start.format('YYYY-MM-DD'),
                     end: end.format('YYYY-MM-DD'),
-                    tour_id: $('input#tour_id').val(),
+                    tour_id: $('#tour_id').val(),
                     security: $('input#st_frontend_security').val(),
                 };
                 $.post(st_params.ajax_url, data, function (respon) {
@@ -73,7 +73,7 @@ jQuery(function($) {
                 }
                 if (typeof elmDate !== 'undefined' && elmDate !== false) {
                     if ($('.st_add_booking_tour').length > 0) {
-                        
+
                         if (elmDate.target.classList.contains('has_starttime')) {
                             ajaxSelectStartTime(check_in_out_input.data('tour-id'), date, date_end, '', check_in_out_input.data('posttype'));
                         } else {
@@ -81,7 +81,7 @@ jQuery(function($) {
                             $('#starttime_box').parent().hide();
                         }
                     }else {
-                        console.log("no"); 
+                        console.log("no");
                     }
                 }
             });
@@ -122,7 +122,7 @@ jQuery(function($) {
                     action: 'st_get_availability_activity_frontend',
                     start: start.format('YYYY-MM-DD'),
                     end: end.format('YYYY-MM-DD'),
-                    activity_id: $('input#activity_id').val(),
+                    activity_id: $('#activity_id').val(),
                     security: $('input#st_frontend_security').val(),
                 };
                 $.post(st_params.ajax_url, data, function (respon) {

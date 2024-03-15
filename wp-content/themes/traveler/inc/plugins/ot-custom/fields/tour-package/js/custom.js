@@ -136,7 +136,7 @@ jQuery(function ($) {
                     var item_custom = $(this);
                     data_custom[j] = {
                         'hotel_name': $('input.hotel-name', item_custom).val(),
-                        'hotel_star': $('input.hotel-star', item_custom).val(),
+                        'hotel_star': $('.hotel-star', item_custom).val(),
                         'hotel_price': $('input.hotel-price', item_custom).val(),
                     };
                     j++;

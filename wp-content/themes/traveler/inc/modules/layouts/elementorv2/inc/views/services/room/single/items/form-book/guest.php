@@ -5,6 +5,7 @@ $adult_number    = STInput::get( 'adult_number', 1 );
 $child_number    = STInput::get( 'child_number', 0 );
 $adult_max       = get_post_meta( get_the_ID(), 'adult_number', true );
 $child_max       = get_post_meta( get_the_ID(), 'children_number', true );
+$number_room_max = get_post_meta( get_the_ID(), 'number_room', true );
 ?>
 <div class="field-guest form-group">
 	<div class="form-extra-field dropdown dropdown-toggle
@@ -36,7 +37,7 @@ $child_max       = get_post_meta( get_the_ID(), 'children_number', true );
 				<div class="st-number-wrapper d-flex align-items-center justify-content-between">
 					<input type="text" name="room_num_search" value="<?php echo esc_attr( $room_num_search ); ?>"
 							class="form-control st-input-number" autocomplete="off" readonly data-min="1"
-							data-max="<?php echo esc_attr( $adult_max ); ?>"/>
+							data-max="<?php echo esc_attr( $number_room_max ); ?>"/>
 				</div>
 			</div>
 		</li>
@@ -47,7 +48,8 @@ $child_max       = get_post_meta( get_the_ID(), 'children_number', true );
 					<div class="st-number-wrapper d-flex align-items-center justify-content-between">
 						<input type="text" name="adult_number" value="<?php echo esc_attr( $adult_number ); ?>"
 								class="form-control st-input-number" autocomplete="off" readonly data-min="1"
-								data-max="<?php echo esc_attr( $adult_max ); ?>"/>
+								data-max="<?php echo esc_attr( $adult_max ); ?>"
+								data-max-adult="<?php echo esc_attr( $adult_max ); ?>"/>
 					</div>
 				</div>
 			</li>
@@ -57,7 +59,8 @@ $child_max       = get_post_meta( get_the_ID(), 'children_number', true );
 					<div class="st-number-wrapper d-flex align-items-center justify-content-between">
 						<input type="text" name="child_number" value="<?php echo esc_attr( $child_number ); ?>"
 								class="form-control st-input-number" autocomplete="off" readonly data-min="0"
-								data-max="<?php echo esc_attr( $child_max ); ?>"/>
+								data-max="<?php echo esc_attr( $child_max ); ?>"
+								data-max-child="<?php echo esc_attr( $child_max ); ?>"/>
 					</div>
 				</div>
 			</li>

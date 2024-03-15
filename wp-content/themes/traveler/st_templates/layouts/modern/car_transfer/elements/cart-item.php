@@ -10,7 +10,7 @@ if($item_id === 'car_transfer'){
         ?>
         <div class="service-section">
             <div class="service-left">
-                <h3 class="title"><a href="<?php echo get_permalink($id_car) ?>"><?php echo get_the_title($id_car) ?></a></h3>
+                <h3 class="title"><?php echo get_the_title($id_car) ?></h3>
                 <?php
                 $address = get_post_meta($id_car, 'cars_address', true);
                 if ($address):

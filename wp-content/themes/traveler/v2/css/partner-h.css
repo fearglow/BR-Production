@@ -2,6 +2,13 @@
 body.page-template-template-user {
   background: #F5F7F9;
 }
+body.page-template-template-user .select2-container--open .select2-dropdown--below.partner,
+body.page-template-template-user .select2-container--open .select2-dropdown--above.partner {
+  transform: translate(0, 32px);
+}
+body.page-template-template-user .select2-container {
+  width: 100% !important;
+}
 
 .st-create-service .st-header {
   font-size: 24px;
@@ -248,7 +255,7 @@ body.page-template-template-user {
   margin-bottom: 10px;
 }
 .st-create-service .st-create-service-content .tab-content .st-field-post_select_ajax .select2-container {
-  width: 100%;
+  width: 100% !important;
 }
 .st-create-service .st-create-service-content .tab-content .st-field-post_select_ajax .select2-container .select2-choice {
   padding: 5px 10px;
@@ -322,6 +329,11 @@ body.page-template-template-user {
   -moz-appearance: none;
   background: #fff url(../images/arr_down.png) center right 10px no-repeat !important;
   background-size: 10px 10px !important;
+}
+.st-create-service .st-create-service-content .form-group .description {
+  font-style: italic;
+  margin-bottom: 20px;
+  font-size: 13px;
 }
 
 .st-partner-field-item.error .st-partner-field {

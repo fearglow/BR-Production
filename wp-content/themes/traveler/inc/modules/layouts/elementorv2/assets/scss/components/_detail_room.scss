@@ -858,6 +858,16 @@ body.st-mod-style #st-content-wrapper.st-style-elementor {
             }
         }
     }
+
+	body.st-mod-style #st-content-wrapper.st-style-elementor {
+		&.singe-room-layout-3 {
+			.widgets {
+				.st-fixed-form-booking {
+					margin-top: 0;
+				}
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 575px) {

@@ -42,6 +42,11 @@ $page_my_account_dashboard = st()->get_option('page_my_account_dashboard');
                 <h5 class="booking-item-title">
                     <?php the_title()?>
                 </h5>
+				<h5 class="booking-item-title">
+					<?php $hotel_parent = get_post_meta( get_the_ID(), 'room_parent', true ); ?>
+					<?= __( 'Hotel: ', 'traveler' ) ?>
+                    <?= get_the_title( $hotel_parent )?>
+                </h5>
                 <div class="text-small">
                     <p style="margin-bottom: 10px;">
                         <?php

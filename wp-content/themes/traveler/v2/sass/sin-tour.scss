@@ -6011,6 +6011,29 @@ body {
       }
     }
   }
+
+  &.search-result-page.st-tours {
+	.toolbar {
+		.toolbar-action {
+			display: none !important;
+		}
+		h2.search-string {
+			font-weight: 600;
+			color: var(--main--color,#123a32);
+		}
+	}
+	@media(max-width: 767px) {
+		.toolbar .toolbar-action-mobile {
+			.btn-date,
+			.btn-sort {
+				display: none;
+			}
+		}
+		.sidebar-filter .sidebar-item-wrapper {
+			padding: 20px;
+		}
+	}
+  }
 }
 /*end*/
 

@@ -50,6 +50,8 @@
 <?php
     $class = '';
     $class .= ' home';
+	$menu_style = st()->get_option('menu_style_modern', 1);
+    $class .= ' st-header-' . $menu_style;
 ?>
 <body <?php body_class($class); ?>>
     <?php echo st()->load_template( 'layouts/modern/common/header/member', '1' ); ?>

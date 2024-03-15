@@ -2520,7 +2520,7 @@ var getHeightHiddenEl = function (el) {
         }
         t.closest('.facilities').find('.data_taxonomy').val(advFacilities.join(','));
     });
-    $('#st-login-form form', body).on('submit', function (ev) {
+    $('#st-login-form form, #st-login-form-page form', body).on('submit', function (ev) {
         ev.preventDefault();
         var form = $(this),
             loader = form.closest('.modal-content').find('.loader-wrapper'),

@@ -147,7 +147,16 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 			                        $tour_name = (intval($tour_id) > 0) ? get_the_title($tour_id) : "";
 
 			                    ?>
-			                    <input id="tour_id" type="hidden" name="item_id" value="<?php echo esc_attr($tour_id); ?>" data-post-type="st_tours" class="form-control custom-form-control st_post_select_ajax " data-pl-name="<?php echo esc_attr($tour_name); ?>" data-user-id="<?php echo get_current_user_id(); ?>">
+			                    <select id="tour_id"
+									type="hidden"
+									name="item_id"
+									value="<?php echo esc_attr($tour_id); ?>"
+									data-post-type="st_tours"
+									class="form-control custom-form-control st_post_select_ajax "
+									data-pl-name="<?php echo esc_attr($tour_name); ?>"
+									data-user-id="<?php echo get_current_user_id(); ?>"
+								>
+								</select>
 		      				</div>
 	      				</div>
 	      			</div>

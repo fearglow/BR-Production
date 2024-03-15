@@ -5412,6 +5412,22 @@ body.st-header-4 .search-result-page .banner, body.st-header-5 .search-result-pa
   border-width: 0px;
   transform: none;
 }
+.st-tour--solo.search-result-page.st-tours .toolbar .toolbar-action {
+  display: none !important;
+}
+.st-tour--solo.search-result-page.st-tours .toolbar h2.search-string {
+  font-weight: 600;
+  color: var(--main--color, #123a32);
+}
+@media (max-width: 767px) {
+  .st-tour--solo.search-result-page.st-tours .toolbar .toolbar-action-mobile .btn-date,
+  .st-tour--solo.search-result-page.st-tours .toolbar .toolbar-action-mobile .btn-sort {
+    display: none;
+  }
+  .st-tour--solo.search-result-page.st-tours .sidebar-filter .sidebar-item-wrapper {
+    padding: 20px;
+  }
+}
 
 /*end*/
 /*Blog lits tour*/

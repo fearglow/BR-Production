@@ -60,6 +60,15 @@ if( !isset( $order_id ) ):
 		$item_id = !empty($st_get_meta_orderby_id['st_booking_id']) ? $st_get_meta_orderby_id['st_booking_id'] : 0;
 		$wc_order_id = !empty($st_get_meta_orderby_id['wc_order_id']) ? $st_get_meta_orderby_id['wc_order_id'] : 0;
 		$total_price = (float) get_post_meta( $wc_order_id, '_order_total', true);
+		if ( empty( $total_price ) ) {
+			global $wpdb;
+			$querystr = "SELECT total_amount
+						FROM  " . $wpdb->prefix . "wc_orders
+						WHERE
+						id = '{$wc_order_id}'
+						";
+			$total_price = $wpdb->get_row( $querystr, OBJECT )->total_amount;
+		}
 		$percent = (int) get_post_meta( $item_id, 'st_cancel_percent', true );
 		if( $post_type == 'st_hotel' && isset( $room_id ) ){
 			$percent = (int) get_post_meta( $room_id, 'st_cancel_percent', true );

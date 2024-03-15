@@ -152,8 +152,6 @@ while ( have_posts() ) :
 							<!-- Featured -->
 							<?php echo st()->load_template( 'layouts/modern/rental/single/item/featured' ) ?>
 							<!-- End Featured -->
-							
-							
 
 							<div class="st-hr large"></div>
 
@@ -164,7 +162,6 @@ while ( have_posts() ) :
 								<?php the_content(); ?>
 							</div>
 							<div class="st-hr large"></div>
-							
 
 							<!-- Discount -->
 							<?php echo st()->load_template( 'layouts/modern/rental/single/item/discount' ); ?>

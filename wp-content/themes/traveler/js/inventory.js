@@ -153,7 +153,7 @@
                     }, 100);
                 }
             });
-            $(document).on('click', '.panel-room-number-wrapper .btn-add-number-room', function(){
+            t.siblings( '.panel-room-number-wrapper ').find( '.btn-add-number-room' ).on('click', function(){
                 var me = $(this);
                 var parent = me.closest('.panel-room-number-wrapper');
                 var number_room = $('input[name="input-room-number"]', parent).val();
@@ -183,7 +183,7 @@
                             'action' : 'st_fetch_inventory',
                             'start'  : moment().format("YYYY-MM-DD"),
                             'end'    : moment().add(30, 'days').format("YYYY-MM-DD"),
-                            'post_id': $('.st-inventory', body).data('id')
+                            'post_id': t.data('id')
                         };
                         inventory_data.render(moment().format(), moment().add(30, 'days').format(), ajaxurl, data);
                     },

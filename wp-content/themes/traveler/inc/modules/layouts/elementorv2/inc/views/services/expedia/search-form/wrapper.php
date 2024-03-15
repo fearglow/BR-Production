@@ -23,7 +23,7 @@ if (isset($in_tab)) {
         $agent = $_SERVER['HTTP_USER_AGENT'];
     }
     if (strlen(strstr($agent, 'Firefox')) > 0) {
-        $browser = 'firefox';
+        // $browser = 'firefox';
     }
 
     if ($browser == 'firefox') {

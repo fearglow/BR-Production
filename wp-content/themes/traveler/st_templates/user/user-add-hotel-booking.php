@@ -149,7 +149,16 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 			                        $hotel_name = (intval($hotel_id) > 0) ? get_the_title($hotel_id) : "";
 
 			                    ?>
-			                    <input id="hotel_id" type="hidden" name="item_id" value="<?php echo esc_attr($hotel_id); ?>" data-post-type="st_hotel" class="form-control custom-form-control st_post_select_ajax " data-pl-name="<?php echo esc_attr($hotel_name); ?>" data-user-id="<?php echo get_current_user_id(); ?>">
+			                    <select id="hotel_id"
+									type="hidden"
+									name="item_id"
+									value="<?php echo esc_attr($hotel_id); ?>"
+									data-post-type="st_hotel"
+									class="form-control custom-form-control st_post_select_ajax "
+									data-pl-name="<?php echo esc_attr($hotel_name); ?>"
+									data-user-id="<?php echo get_current_user_id(); ?>"
+								>
+								</select>
 		      				</div>
 	      				</div>
 	      				<div class="col-xs-12 col-sm-6">
@@ -160,7 +169,15 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 			                        $room_name = (intval($room_id) > 0) ? get_the_title($room_id) : "";
 
 			                    ?>
-			                    <input id="room_id" type="hidden" name="room_id" value="<?php echo esc_attr($room_id); ?>" data-post-type="hotel_room" class="form-control custom-form-control " data-user-id="<?php echo get_current_user_id(); ?>">
+			                    <select id="room_id"
+									type="hidden"
+									name="room_id"
+									value="<?php echo esc_attr($room_id); ?>"
+									data-post-type="hotel_room"
+									class="form-control custom-form-control "
+									data-user-id="<?php echo get_current_user_id(); ?>"
+								>
+								</select>
 		      				</div>
 	      				</div>
 	      			</div>
@@ -252,7 +269,7 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 								<div id="required_name_html">
 
 							</div>
-								
+
 							</div>
 						</div>
 					</div>
@@ -292,7 +309,7 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 											});
 										</script>
 									<?php } ?>
-									
+
 								</div>
 							</div>
 						</div>

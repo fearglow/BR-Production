@@ -4629,11 +4629,6 @@ body.st-header-9 #st-content-wrapper.st-style-elementor .st-heading-section {
   background: transparent;
   height: 100%;
 }
-@media screen and (max-width: 767px) {
-  .single.st-mod-style .mfp-content {
-    height: auto;
-  }
-}
 .single.st-mod-style .mfp-content .mfp-close {
   display: inline-block;
   z-index: 99;
@@ -5496,6 +5491,17 @@ body.st-header-9 #st-content-wrapper.st-style-elementor .st-heading-section {
   border-bottom: transparent;
   padding-bottom: 0;
 }
+.single.single-st_tours.st-mod-style:not(.st-header-9) .mfp-content {
+  height: auto;
+}
+.single.single-st_tours.st-mod-style:not(.st-header-9) .mfp-content .mfp-close,
+.single.single-st_tours.st-mod-style:not(.st-header-9) .mfp-content .mfp-close:active,
+.single.single-st_tours.st-mod-style:not(.st-header-9) .mfp-content .mfp-close:focus {
+  right: -15px;
+  top: -15px;
+  opacity: 1;
+  background: #FFFFFF url(../../../../../../v2/images/svg/ico_close.svg) center center no-repeat;
+}
 
 .st-dot {
   height: 3px;
@@ -6257,6 +6263,9 @@ body.st-mod-style #st-content-wrapper.st-style-elementor .room-rates .rate-calen
   .single-hotel_room #st-content-wrapper.st-style-elementor .rate-calendar.style-2 .st-availability-calendar-wrapper .calendar .calendar-table .table-condensed tbody tr .td-date.not-show,
   .single-st_tours #st-content-wrapper.st-style-elementor .rate-calendar.style-2 .st-availability-calendar-wrapper .calendar .calendar-table .table-condensed tbody tr .td-date.not-show {
     height: 0 !important;
+  }
+  body.st-mod-style #st-content-wrapper.st-style-elementor.singe-room-layout-3 .widgets .st-fixed-form-booking {
+    margin-top: 0;
   }
 }
 @media screen and (max-width: 575px) {

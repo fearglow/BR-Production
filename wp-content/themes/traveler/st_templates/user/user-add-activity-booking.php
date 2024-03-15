@@ -152,14 +152,19 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
                 <label for="activity_id" class="head_bol"><?php _e('Activity', 'traveler'); ?> <span
                     class="text-small text-danger">(*)</span>:</label>
                 <?php
-			                        $activity_id = isset($_POST['item_id']) ? $_POST['item_id'] : '';
-			                        $activity_name = (intval($activity_id) > 0) ? get_the_title($activity_id) : "";
-
-			                    ?>
-                <input id="activity_id" type="hidden" name="item_id" value="<?php echo esc_attr($activity_id); ?>"
-                  data-post-type="st_activity" class="form-control custom-form-control st_post_select_ajax "
-                  data-pl-name="<?php echo esc_attr($activity_name); ?>"
-                  data-user-id="<?php echo get_current_user_id(); ?>">
+					$activity_id = isset($_POST['item_id']) ? $_POST['item_id'] : '';
+					$activity_name = (intval($activity_id) > 0) ? get_the_title($activity_id) : "";
+				?>
+                <select id="activity_id"
+					type="hidden"
+					name="item_id"
+					value="<?php echo esc_attr($activity_id); ?>"
+                  	data-post-type="st_activity"
+					class="form-control custom-form-control st_post_select_ajax "
+                  	data-pl-name="<?php echo esc_attr($activity_name); ?>"
+                  	data-user-id="<?php echo get_current_user_id(); ?>"
+				>
+				</select>
               </div>
             </div>
           </div>
@@ -292,7 +297,7 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
                     data-posttype="st_activity" />
                   <div class="" id="starttime_box">
                     <label><?php echo __('Start time', 'traveler'); ?></label>
-                    <select class="form-control st_tour_starttime" name="starttime" id="starttime_tour"></select>
+                    <select class="form-control st_tour_starttime" name="starttime_tour" id="starttime_tour"></select>
                   </div>
                 </div>
                 <!--End starttime-->

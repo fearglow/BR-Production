@@ -45,12 +45,6 @@ $data_price =$item_data['_st_data_price'];
             <span class="meta-label"><?php echo __( 'Adult number:' , 'traveler' ); ?></span>
             <span class="meta-data">
                 <?php echo esc_html($adult);?>
-                <?php if(!empty($adult)){?>
-                    x
-                    <?php echo TravelHelper::format_money($data_price['adult_price']/$adult) ; ?>
-                    =
-                    <?php echo TravelHelper::format_money($data_price['adult_price']) ?>
-                <?php  } ?>
             </span>
         </li>
     <?php }?>
@@ -59,12 +53,6 @@ $data_price =$item_data['_st_data_price'];
             <span class="meta-label"><?php echo __( 'Children number:' , 'traveler' ); ?></span>
             <span class="meta-data">
                 <?php echo esc_html($child)?>
-                <?php if(!empty($child)){?>
-                    x
-                    <?php echo TravelHelper::format_money($data_price['child_price']/$child) ; ?>
-                    =
-                    <?php echo TravelHelper::format_money($data_price['child_price']) ?>
-                <?php }?>
             </span>
         </li>
     <?php  }?>
@@ -73,12 +61,6 @@ $data_price =$item_data['_st_data_price'];
             <span class="meta-label"><?php echo __( 'Infant number:' , 'traveler' ); ?></span>
             <span class="meta-data">
                 <?php echo esc_html($infant)?>
-                <?php if(!empty($infant)){?>
-                    x
-                    <?php echo TravelHelper::format_money($data_price['infant_price']/$infant) ; ?>
-                    =
-                    <?php echo TravelHelper::format_money($data_price['infant_price']) ?>
-                <?php }?>
             </span>
         </li>
     <?php  }?>

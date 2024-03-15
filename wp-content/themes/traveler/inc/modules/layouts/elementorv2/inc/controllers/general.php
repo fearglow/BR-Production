@@ -597,12 +597,9 @@ if (!class_exists('STT_Hotelv2_General')) {
         public function _changeResetPasswordTemplate()
         {
             if (check_using_elementor()) {
-                $menu_style = st()->get_option('menu_style_modern', 1);
-                if ($menu_style == 9) {
-                    echo stt_elementorv2()->loadView('templates/reset-password');
-                    exit();
-                }
+				echo stt_elementorv2()->loadView('templates/reset-password');
             }
+			exit();
         }
 
         public function _changeRegisterTemplate()

@@ -48,7 +48,7 @@ if ( $query->have_posts() ) :
 				$price = STPrice::getSalePrice( get_the_ID(), strtotime( $start ), strtotime( $end ) );
 
 				$min_price = get_post_meta( get_the_ID(), 'min_price', true );
-				$min_price = $min_price * $number_day;
+				$min_price = floatval( $min_price ) * $number_day;
 				$min_price = ! empty( $price['total_price_not_bulk_discount'] ) ? floatval( $price['total_price_not_bulk_discount'] ) : $min_price;
 				?>
 				<div class="search-result-page st-rental st-tours">

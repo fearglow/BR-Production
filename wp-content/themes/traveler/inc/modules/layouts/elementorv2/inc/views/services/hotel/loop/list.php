@@ -20,7 +20,7 @@ $phone_number = get_post_meta($post_translated,'phone',true);
                 <div class="featured">
                     <?php
                         if(!empty(st()->get_option('st_text_featured', ''))){
-                            echo esc_html(st()->get_option('st_text_featured', ''));
+                            echo wp_kses_post(st()->get_option('st_text_featured', ''));
                         } else {?>
                             <?php echo esc_html__('Featured', 'traveler') ?>
                         <?php }

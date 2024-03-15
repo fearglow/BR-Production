@@ -87,10 +87,6 @@ $tour_price_type = $item_data['_st_price_type'];
             <span class="meta-label"><?php echo __( 'Adult number:' , 'traveler' ); ?></span>
             <span class="meta-data">
                 <?php echo esc_html($adult);?>
-                <?php if(!empty($data_price['adult_price'])){ ?>
-                x
-                <?php echo TravelHelper::format_money_raw($item_data['_st_adult_price']) ?>
-                <?php  } ;?>
             </span>
         </li>
         <?php }?>
@@ -101,14 +97,6 @@ $tour_price_type = $item_data['_st_price_type'];
             <span class="meta-label"><?php echo __( 'Children number:' , 'traveler' ); ?></span>
             <span class="meta-data">
                 <?php echo esc_html($child)?>
-	            <?php if(!empty($data_price['child_price'])){ ?>
-                x
-                <?php
-                if(isset($item_data['_st_child_price'])){
-                    $child_price = TravelHelper::convert_money($data_price['child_price']/$child);
-                    ?>
-                <?php echo TravelHelper::format_money_raw($child_price) ?>
-                <?php } } ;?>
             </span>
         </li>
         <?php  }?>
@@ -118,14 +106,6 @@ $tour_price_type = $item_data['_st_price_type'];
             <span class="meta-label"><?php echo __( 'Infant number:' , 'traveler' ); ?></span>
             <span class="meta-data">
                 <?php echo esc_html($infant)?>
-	            <?php if(!empty($data_price['infant_price'])){ ?>
-                x
-                <?php
-                if(isset($item_data['_st_infant_price'])){
-                    $infant_price = TravelHelper::convert_money($data_price['infant_price']/$infant);
-                    ?>
-                    <?php echo TravelHelper::format_money_raw($infant_price) ?>
-                <?php } } ;?>
             </span>
         </li>
         <?php  }?>

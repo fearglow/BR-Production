@@ -54,11 +54,12 @@ jQuery(function($) {
     }
     $('.st_post_select_ajax', parent).each(function() {
         var me = $(this);
-        
+
         $(this).select2({
             placeholder: me.data('placeholder'),
             minimumInputLength: 2,
             allowClear: !0,
+			dropdownCssClass: 'partner',
             ajax: {
                 url: st_params.ajax_url,
                 dataType: 'json',
@@ -71,10 +72,15 @@ jQuery(function($) {
                         user_id: me.data('user-id')
                     }
                 },
-                results: function(data, page) {
-                    return {
-                        results: data.items
-                    }
+                processResults: function(data, page) {
+					return {
+						results: $.map(data.items, function(obj) {
+							return {
+								id: obj.id,
+								text: obj.name
+							};
+						})
+					};
                 },
                 cache: !0
             },
@@ -102,7 +108,7 @@ jQuery(function($) {
             }
         })
     });
-    $('input#hotel_id', parent).on('change', function(event) {
+    $('#hotel_id', parent).on('change', function(event) {
         var hotel_id = $(this).val();
         var user_id = $(this).data('user-id');
         var data = {
@@ -114,13 +120,13 @@ jQuery(function($) {
         $.post(st_params.ajax_url, data, function(respon, textStatus, xhr) {
             $('#overlay', parent).removeClass('active');
             if (typeof respon == 'object') {
-                $('input#room_id', parent).select2({
+                $('#room_id', parent).select2({
                     data: respon
                 })
             }
         }, 'json')
     });
-    $('input#room_id', parent).on('change', function(event) {
+    $('#room_id', parent).on('change', function(event) {
         $('input#item_price', parent).val('');
         $('#extra-price-wrapper', parent).html('');
         var room_id = $(this).val();
@@ -152,7 +158,7 @@ jQuery(function($) {
 
         }
     });
-    $('input#rental_id', parent).on('change', function(event) {
+    $('#rental_id', parent).on('change', function(event) {
         $('input#item_price', parent).val('');
         $('#extra-price-wrapper', parent).html('');
         var rental_id = $(this).val();
@@ -180,7 +186,7 @@ jQuery(function($) {
             }, 'json')
         }
     });
-    $('input#tour_id', parent).on('change', function(event) {
+    $('#tour_id', parent).on('change', function(event) {
         var tour_id = $(this).val();
         if (typeof tour_id != 'undefined' && parseInt(tour_id) > 0) {
             $('#overlay', parent).addClass('active');
@@ -218,7 +224,7 @@ jQuery(function($) {
             }, 'json')
         }
     });
-    $('input#activity_id', parent).on('change', function(event) {
+    $('#activity_id', parent).on('change', function(event) {
         var activity_id = $(this).val();
         if (typeof activity_id != 'undefined' && parseInt(activity_id) > 0) {
             $('#overlay', parent).addClass('active');
@@ -283,7 +289,7 @@ jQuery(function($) {
         }
     });
     var list_selected_equipment = [];
-    $('input#car_id.st_post_select_ajax', parent).on('change', function(event) {
+    $('#car_id.st_post_select_ajax', parent).on('change', function(event) {
         var car_id = $(this).val();
         if (typeof car_id != 'undefined' && parseInt(car_id) > 0) {
             $('#overlay', parent).addClass('active');
@@ -748,6 +754,7 @@ jQuery(function($) {
             placeholder: me.data('placeholder'),
             minimumInputLength: 2,
             allowClear: !0,
+			dropdownCssClass: 'partner',
             ajax: {
                 url: st_params.ajax_url,
                 dataType: 'json',
@@ -760,10 +767,15 @@ jQuery(function($) {
                         user_id: me.data('user-id')
                     }
                 },
-                results: function(data, page) {
+                processResults: function(data, page) {
                     return {
-                        results: data.items
-                    }
+						results: $.map(data.items, function(obj) {
+							return {
+								id: obj.id,
+								text: obj.name
+							};
+						})
+					};
                 },
                 cache: !0
             },
@@ -797,6 +809,7 @@ jQuery(function($) {
             placeholder: me.data('placeholder'),
             minimumInputLength: 2,
             allowClear: !0,
+			dropdownCssClass: 'partner',
             ajax: {
                 url: st_params.ajax_url,
                 dataType: 'json',
@@ -809,10 +822,15 @@ jQuery(function($) {
                         user_id: me.data('user-id')
                     }
                 },
-                results: function(data, page) {
+                processResults: function(data, page) {
                     return {
-                        results: data.items
-                    }
+						results: $.map(data.items, function(obj) {
+							return {
+								id: obj.id,
+								text: obj.name
+							};
+						})
+					};
                 },
                 cache: !0
             },
@@ -893,7 +911,8 @@ jQuery(function($) {
     // });
     $('#transfer_from.st_transfer_from_select_ajax', parent).on('change', function(event) {
         var transfer_from_val = $('#transfer_from.st_transfer_from_select_ajax').val();
-        var transfer_to_val = $('#transfer_to.st_transfer_to_select_ajax').val();
+        var transfer_to_val = $('#transfer_to.st_transfer_to_select_ajax').find(":selected").val();
+        console.log('transfer_to_val', transfer_to_val);
         if( (typeof transfer_from_val !== 'undefined')  &&  (transfer_from_val.length > 0) && (typeof transfer_to_val !== 'undefined')  &&  (transfer_to_val.length > 0)) {
             $('.st_check_book_none').show();
             $("#car_id.st_post_select_carstransfer_ajax").select2();

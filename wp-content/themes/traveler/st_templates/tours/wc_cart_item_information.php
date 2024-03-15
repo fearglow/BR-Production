@@ -97,7 +97,7 @@ $tour_price_type = get_post_meta($item_id, 'tour_price_by', true);
 						<?php if(!empty($data_price['infant_price'])): ?>
 						x
 						<?php
-							echo TravelHelper::format_money( $data['infant_number'] );
+							echo TravelHelper::format_money( $data['infant_price'] );
 							endif;
 						?>
 						<br>

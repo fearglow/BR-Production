@@ -12,9 +12,9 @@ wp_enqueue_script('filter-car-transfer');
                     <?php echo st()->load_template('layouts/elementor/car_transfer/elements/sidebar'); ?>
                     <?php
                     $query           = array(
-                        'post_type'      => 'st_cars' ,
-                        'post_status'    => 'publish' ,
-                        's'              => '' ,
+                        'post_type'      => 'st_cars',
+                        'post_status'    => 'publish',
+                        's'              => '',
                         'orderby' => 'post_modified',
                         'order'   => 'DESC',
                     );
@@ -25,7 +25,7 @@ wp_enqueue_script('filter-car-transfer');
                     $st_search_query = $wp_query;
                     $car->get_search_results_remove_filter();
                     wp_reset_query();
-                   
+
                     echo st()->load_template('layouts/elementor/car_transfer/elements/content');
                     ?>
                 </div>

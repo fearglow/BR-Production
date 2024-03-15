@@ -90,6 +90,15 @@
 </div>
 <style>
     .inventory-edit-room-number{
-        display: none !important;
+        /* display: none !important; */
+
+		color: #ed8323;
+		display: inline-block;
+		width: 20px;
+		height: 20px;
+		float: right;
+		cursor: pointer;
+		position: absolute;
+		right: 0;
     }
 </style>

@@ -173,14 +173,6 @@ while ( have_posts() ) :
 
 							<div class="st-hr large"></div>
 
-							<!-- Rental Image Map Shortcode -->
-							<div class="rental-image-map">
-								<?php echo do_shortcode('[rental_image_map]'); ?>
-							</div>
-							<!-- End Rental Image Map Shortcode -->
-
-							<div class="st-hr large"></div>
-
 							<!-- Attribute -->
 							<?php echo st()->load_template( 'layouts/modern/rental/single/item/attribute' ); ?>
 							<!-- End Discount -->

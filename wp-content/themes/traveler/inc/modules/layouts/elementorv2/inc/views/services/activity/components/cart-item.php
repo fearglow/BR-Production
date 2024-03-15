@@ -281,12 +281,11 @@ if(isset($item_id) and $item_id):
         $data_price = STPrice::getPriceByPeopleTour($item_id, strtotime($check_in), strtotime($check_out),  $adult_number, $child_number, $infant_number);
     }else{
         $data_price = STPrice::getPriceByFixedTour($item_id, strtotime($check_in), strtotime($check_out));
-
     }
     $base_price = isset($item['data']['base_price']) ? floatval($item['data']['base_price']) : 0;
     $origin_price = floatval(!empty($data_price['total_price']) ? $data_price['total_price'] : 0);
     $sale_price = floatval(!empty($item['data']['sale_price']) ? $item['data']['sale_price'] : $origin_price);
-
+	$data_prices = STPrice::getDataPrice();
 
     $hotel_package_price = isset($item['data']['package_hotel_price']) ? floatval($item['data']['package_hotel_price']) : 0;
     $activity_package_price = isset($item['data']['package_activity_price']) ? floatval($item['data']['package_activity_price']) : 0;
@@ -294,7 +293,7 @@ if(isset($item_id) and $item_id):
     $flight_package_price = isset($item['data']['package_flight_price']) ? floatval($item['data']['package_flight_price']) : 0;
 
     $price_coupon = floatval(STCart::get_coupon_amount());
-    $price_with_tax = STPrice::getPriceWithTax($sale_price);
+	$price_with_tax = isset($data_prices['total_price_with_tax']) ? $data_prices['total_price_with_tax'] : 0;
     $price_with_tax -= $price_coupon;
     ?>
     <ul>

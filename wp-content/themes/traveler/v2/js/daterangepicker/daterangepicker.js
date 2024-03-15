@@ -1069,11 +1069,11 @@
                                 date_class += 'start-group ';
                             }
                             if (end.isSame(currentDate, 'day') && this.allEvents[i].group) {
-                                date_class += 'end-group ';
+                                date_class += 'end-group inner-group ';
                                 classes.push('off', 'disabled');
                             }
                             if (currentDate.isAfter(start) && currentDate.isBefore(end) && this.allEvents[i].group) {
-                                date_class += 'in-group ';
+                                date_class += 'in-group inner-group ';
                                 classes.push('off', 'disabled');
                             }
                             if (this.showEventTooltip) {
@@ -1726,6 +1726,7 @@
 
             //ignore dates that can't be selected
             if (!$(e.target).parent().hasClass('available')) return;
+            if ($(e.target).parent().hasClass('inner-group')) return;
 
             //have the text inputs above calendars reflect the date being hovered over
             var title = $(e.target).parent().attr('data-title');
@@ -1770,6 +1771,7 @@
         clickDate: function (e) {
             this.elmDate = e;
             if (!$(e.target).parent().hasClass('available')) return;
+            if ($(e.target).parent().hasClass('inner-group')) return;
             var title = $(e.target).parent().attr('data-title');
             var row = title.substr(1, 1);
             var col = title.substr(3, 1);

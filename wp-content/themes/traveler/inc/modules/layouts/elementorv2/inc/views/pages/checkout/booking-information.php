@@ -320,10 +320,12 @@ if($status === 'complete'){
                             <?php }
                             ?>
 
+							<?php if ( $post_type !== 'car_transfer' ) : ?>
 							<li>
 								<span class="label"><?php echo __('Total', 'traveler'); ?></span>
 								<span class="value"><?php echo TravelHelper::format_money_from_db($price_with_tax, $currency); ?></span>
 							</li>
+							<?php endif; ?>
 
                             <?php if ($coupon_price) { ?>
                                 <li>

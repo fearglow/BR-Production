@@ -100,7 +100,8 @@ class STCustomOptiontree {
 	public function st_transfer_from_select_ajax() {
 		$result = [];
 		$data   = TravelHelper::transferDestinationOptionNewFronend();
-		$q      = strtolower( STInput::get( 'q' ) );
+		$q      = STInput::get( 'q' );
+		$q      = strtolower( $q['term'] );
 		foreach ( $data as $point ) :
 			$label = strtolower( $point['label'] );
 			if ( str_contains( $label, $q ) !== false ) {
@@ -119,7 +120,8 @@ class STCustomOptiontree {
 	public function st_transfer_to_select_ajax() {
 		$result = [];
 		$data   = TravelHelper::transferDestinationOptionNewFronend();
-		$q      = strtolower( STInput::get( 'q' ) );
+		$q      = STInput::get( 'q' );
+		$q      = strtolower( $q['term'] );
 		foreach ( $data as $point ) :
 			$label = strtolower( $point['label'] );
 			if ( str_contains( $label, $q ) !== false ) {
@@ -172,13 +174,13 @@ class STCustomOptiontree {
 				's'              => isset( $q['term'] ) ? esc_html( trim( $q['term'] ) ) : $q,
 				'post_status'    => [ 'publish', 'private' ],
 			];
-			if($post_type == 'st_cars'){
+			if ( $post_type == 'st_cars' ) {
 				$array_car = [
-					'meta_key' => 'car_type',
-					'meta_value' => 'car_transfer',
+					'meta_key'     => 'car_type',
+					'meta_value'   => 'car_transfer',
 					'meta_compare' => '!=',
 				];
-				$args = array_merge($args, $array_car);
+				$args      = array_merge( $args, $array_car );
 			}
 			if ( ! is_super_admin( $user_id ) ) {
 				$args['author'] = $user_id;
@@ -252,19 +254,19 @@ if ( ! function_exists( 'ot_type_post_select_ajax' ) ) :
 		/* allow fields to be filtered */
 		$post_select_ajax = apply_filters( 'ot_recognized_post_select_ajax_fields', $field_value, $field_id );
 
-			$pl_name = '';
-			$pl_desc = '';
+		$pl_name = '';
+		$pl_desc = '';
 		if ( $field_value ) {
 			$pl_name = get_the_title( $field_value );
 			$pl_desc = 'ID: ' . get_the_ID( $field_value );
 			$pl_id   = get_the_ID( $field_value );
 		}
 
-			$post_type_json = $post_type;
+		$post_type_json = $post_type;
 
-			echo '<div class="option-tree-ui-post_select_ajax-input-wrap">';
-			echo "<select data-pl-name='{$pl_name}' data-pl-desc='{$pl_desc}' data-placeholder='{$field_desc}' value='{$field_value}' data-post-type='{$post_type_json}' type=hidden class='st_post_select_ajax' id='" . esc_attr( $field_id ) . "' name='" . esc_attr( $field_name ) . "'><option value='{$field_value}' selected='selected'>{$pl_name}</option></select>";
-			echo '</div>';
+		echo '<div class="option-tree-ui-post_select_ajax-input-wrap">';
+		echo "<select data-pl-name='{$pl_name}' data-pl-desc='{$pl_desc}' data-placeholder='{$field_desc}' value='{$field_value}' data-post-type='{$post_type_json}' type=hidden class='st_post_select_ajax' id='" . esc_attr( $field_id ) . "' name='" . esc_attr( $field_name ) . "'><option value='{$field_value}' selected='selected'>{$pl_name}</option></select>";
+		echo '</div>';
 		echo '</div>';
 		echo '</div>';
 	}
@@ -296,47 +298,50 @@ if ( ! function_exists( 'ot_type_upsell_select_ajax' ) ) :
 		/* description */
 		echo balanceTags( $has_desc ? '<div class="description" style="margin-bottom:0px;">' . htmlspecialchars_decode( $field_desc ) . '</div>' : '' );
 		$post_select_ajax = apply_filters( 'ot_recognized_post_select_ajax_fields', $field_value, $field_id );
-		$list_services = st_listOfServiceSelect();
-		$select_type ='';
+		$list_services    = st_listOfServiceSelect();
+		$select_type      = '';
 		ob_start();
 
 		?>
 		<div class="format-setting-wrap">
 			<div class="format-setting-label">
-				<h4 for="<?php echo esc_attr( $field_name ) . '[type-service]';?>"><?php echo esc_html__('Type Service', 'traveler');?></h4>
+				<h4 for="<?php echo esc_attr( $field_name ) . '[type-service]'; ?>"><?php echo esc_html__( 'Type Service', 'traveler' ); ?></h4>
 			</div>
 			<div class="format-setting type-select no-desc">
 				<div class="format-setting-inner">
 					<div class="select-wrapper">
-						<span><?php echo $list_services[$field_value['type-service'] ?? ''] ?? esc_html__('Type Service', 'traveler');?></span>
-						<select name="<?php echo esc_attr( $field_name ) . '[type-service]';?>" id="<?php echo esc_attr( $field_name ) . '[type-service]';?>" class="option-tree-ui-select stt_select_type">
-							<?php foreach ($list_services as $key => $service) {?>
-								<option value="<?php echo esc_attr($key);?>" <?php selected( $field_value['type-service']??'', $key ); ?>><?php echo esc_html($service);?></option>
-							<?php }?>
+						<span><?php echo $list_services[ $field_value['type-service'] ?? '' ] ?? esc_html__( 'Type Service', 'traveler' ); ?></span>
+						<select name="<?php echo esc_attr( $field_name ) . '[type-service]'; ?>" id="<?php echo esc_attr( $field_name ) . '[type-service]'; ?>" class="option-tree-ui-select stt_select_type">
+							<?php foreach ( $list_services as $key => $service ) { ?>
+								<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $field_value['type-service'] ?? '', $key ); ?>><?php echo esc_html( $service ); ?></option>
+							<?php } ?>
 						</select>
 					</div>
 				</div>
 			</div>
 		</div>
-		<?php $select_type = @ob_get_clean();
+		<?php
+		$select_type = @ob_get_clean();
 		echo $select_type;
 		/* format setting inner wrapper */
 		echo '<div class="format-setting-inner">';
 		/* allow fields to be filtered */
 
 		$value_option = '';
-		if ( !empty($field_value['list-item'] )) {
+		if ( ! empty( $field_value['list-item'] ) ) {
 			ob_start();
-			foreach($field_value['list-item'] as $id_post){ ?>
-				<option selected="selected" value="<?php echo esc_attr($id_post);?>"><?php echo get_the_title($id_post);?></option>
-			<?php }
+			foreach ( $field_value['list-item'] as $id_post ) {
+				?>
+				<option selected="selected" value="<?php echo esc_attr( $id_post ); ?>"><?php echo get_the_title( $id_post ); ?></option>
+				<?php
+			}
 			$value_option = @ob_get_clean();
 		}
 
-			$post_type_json = $post_type;
-			echo '<div class="option-tree-ui-post_select_ajax-input-wrap">';
-			echo "<select multiple data-placeholder='" .  __( 'Select items for Upsell', 'traveler' ) . "'  data-post-type='{$post_type_json}' type=hidden class='upsell_select_ajax' id='" . esc_attr( $field_id ) . "' name='" . esc_attr( $field_name ) . "[list-item][]'>".$value_option."</select>";
-			echo '</div>';
+		$post_type_json = $post_type;
+		echo '<div class="option-tree-ui-post_select_ajax-input-wrap">';
+		echo "<select multiple data-placeholder='" . __( 'Select items for Upsell', 'traveler' ) . "'  data-post-type='{$post_type_json}' type=hidden class='upsell_select_ajax' id='" . esc_attr( $field_id ) . "' name='" . esc_attr( $field_name ) . "[list-item][]'>" . $value_option . '</select>';
+		echo '</div>';
 		echo '</div>';
 		echo '</div>';
 	}

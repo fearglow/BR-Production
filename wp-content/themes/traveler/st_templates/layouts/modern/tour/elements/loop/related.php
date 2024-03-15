@@ -22,7 +22,7 @@
     <div class="content">
         <h3 class="title"><a href="<?php echo get_the_permalink($post_id); ?>" class="st-link c-main"><?php echo get_the_title($post_id) ?></a></h3>
         <div class="price-wrapper">
-            <?php echo __('from', 'traveler'); ?> <span class="price"><?php echo TravelHelper::format_money( $price['price_new'] ); ?></span>
+            <?php echo __('from', 'traveler'); ?> <span class="price"><?php echo STTour::get_price_html( $post_id ); ?></span>
         </div>
     </div>
 </div>

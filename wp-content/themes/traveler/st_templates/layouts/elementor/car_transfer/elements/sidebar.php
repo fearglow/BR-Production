@@ -1,5 +1,5 @@
 <?php
-$filters = get_post_meta(get_the_ID(), 'rs_filter_car', true);
+$filters = get_post_meta(get_the_ID(), 'rs_filter_car_transfer', true);
 if(!isset($format))
     $format = '';
 ?>

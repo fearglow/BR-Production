@@ -2,18 +2,8 @@
 $register_page = get_the_permalink(st()->get_option("page_user_register"));
 $reset_page = get_the_permalink(st()->get_option("page_reset_password"));
 ?>
-<div id="st-content-wrapper" class="st-style-elementor">
-    <?php
-    $menu_transparent = st()->get_option('menu_transparent', '');
-    if($menu_transparent === 'on'){
-        $thumb_id = get_post_thumbnail_id(get_the_ID());
-
-        if($thumb_id){
-            $img_url = wp_get_attachment_image_url($thumb_id, 'full');
-            echo stt_elementorv2()->loadView('components/banner', ['img_url' => $img_url]);
-        }
-
-    }?>
+<div id="st-content-wrapper" class="search-result-page st-style-elementor">
+	<?php echo st()->load_template('layouts/modern/hotel/elements/banner'); ?>
 </div>
 <div class="container">
     <div id="st-login-form-page" class="st-login-class-wrapper">

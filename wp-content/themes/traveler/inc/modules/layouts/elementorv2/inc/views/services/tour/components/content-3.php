@@ -22,10 +22,14 @@ if (empty($layout)) {
 
 ?>
 <div class="col-sm-12 col-md-12 col-lg-8">
-    <div class="st-left">
-        <h2 class="search-string modern-result-string" id="modern-result-string"><?php echo balanceTags($result_string); ?> <div id="btn-clear-filter" class="btn-clear-filter" style="display: none"><?php echo __('Clear filter', 'traveler'); ?></div>
-        </h2>
-    </div>
+	<?php
+	echo stt_elementorv2()->loadView( 'services/hotel/components/toolbar', [
+		'style'        => $style,
+		'has_filter'   => true,
+		'post_type'    => 'st_tours',
+		'service_text' => __( 'New tour', 'traveler' ),
+	] );
+	?>
     <div id="modern-search-result" class="modern-search-result list-tab-wrapper style_3" data-layout="8">
         <?php echo st()->load_template('layouts/elementor/common/loader', 'content'); ?>
         <?php
@@ -42,7 +46,7 @@ if (empty($layout)) {
                 echo ($style == 'grid') ? '<div class="col-12 col-md-6 col-lg-6 item-service">' : '<div class="col-12 item-service">';
                 if ($style == 'grid') {
                     echo apply_filters('st_elementor_loop_tour_grid_mod_service_view',stt_elementorv2()->loadView('services/tour/loop/grid') , 'style_3');
-                } 
+                }
                 echo '</div>';
             }
         } else {

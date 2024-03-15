@@ -27,14 +27,14 @@ $class_image = 'image-feature st-hover-grow';
     <div class="item service-border st-border-radius">
         <div class="featured-image">
             <div class="st-tag-feature-sale">
-               
+
                 <?php
                 $is_featured = get_post_meta($post_translated, 'is_featured', true);
                 if ($is_featured == 'on') { ?>
                     <div class="featured">
-                        <?php 
+                        <?php
                             if(!empty(st()->get_option('st_text_featured', ''))){
-                                echo esc_html(st()->get_option('st_text_featured', ''));
+                                echo wp_kses_post(st()->get_option('st_text_featured', ''));
                             } else {?>
                                 <?php echo esc_html__('Featured', 'traveler') ?>
                             <?php }
@@ -112,7 +112,7 @@ $class_image = 'image-feature st-hover-grow';
                 </div>
             </div>
             <div class="section-footer">
-               
+
                 <div class="price-wrapper d-flex align-items-center" itemprop="totalPrice">
                     <span class="price">
                         <?php

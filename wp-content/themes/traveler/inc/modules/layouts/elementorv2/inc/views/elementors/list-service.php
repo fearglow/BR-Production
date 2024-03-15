@@ -484,6 +484,18 @@ if (!empty($v) && $type_form  !== 'mix_service') { ?>
                         $list_ids = ST_Elementor::st_explode_select2($post_ids_rental);
                         $args['post__in'] = array_keys($list_ids);
                     }
+
+					if ( is_singular( 'location' ) ) {
+						global $wpdb;
+						$location_id = get_the_ID();
+						$sql = "SELECT post_id FROM {$wpdb->prefix}st_location_relationships WHERE 1=1 AND location_from IN ({$location_id}) AND post_type IN ('st_rental')";
+						$res = $wpdb->get_results($sql, ARRAY_A);
+						$res = array_map ( function($re) {
+							return $re['post_id'];
+						}, $res );
+						$args['post__in'] = $res;
+					}
+
                     $current_lang = TravelHelper::current_lang();
                     $main_lang = TravelHelper::primary_lang();
                     $rental = STRental::inst();
@@ -1047,6 +1059,18 @@ if (!empty($v) && $type_form  !== 'mix_service') { ?>
                                                 $list_ids = ST_Elementor::st_explode_select2($post_ids_rental);
                                                 $args_rental['post__in'] = array_keys($list_ids);
                                             }
+
+											if ( is_singular( 'location' ) ) {
+												global $wpdb;
+												$location_id = get_the_ID();
+												$sql = "SELECT post_id FROM {$wpdb->prefix}st_location_relationships WHERE 1=1 AND location_from IN ({$location_id}) AND post_type IN ('st_rental')";
+												$res = $wpdb->get_results($sql, ARRAY_A);
+												$res = array_map ( function($re) {
+													return $re['post_id'];
+												}, $res );
+												$args_rental['post__in'] = $res;
+											}
+
                                             $current_lang = TravelHelper::current_lang();
                                             $main_lang = TravelHelper::primary_lang();
 

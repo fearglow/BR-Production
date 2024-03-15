@@ -288,7 +288,7 @@
             $(this).fadeIn();
         });
 
-        if ($('.search-result-page.tour-layout6, .search-result-page.tour-layout7').length) {
+        if ($('.search-result-page.tour-layout6, .search-result-page.tour-layout7, .search-result-page.tour-layout8').length) {
             let wrapper = $('.search-result-page');
             data['version'] = 'elementorv2';
             data['version_layout'] = wrapper.data('layout');

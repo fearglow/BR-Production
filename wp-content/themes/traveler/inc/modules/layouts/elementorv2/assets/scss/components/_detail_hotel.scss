@@ -220,7 +220,7 @@
             background: transparent;
             height: 100%;
             @media screen and (max-width:767px) {
-                height: auto;
+                // height: auto;
             }
             .mfp-close{
                 display: inline-block;
@@ -1179,9 +1179,20 @@
                 }
             }
         }
-
-
     }
+	&.single-st_tours.st-mod-style:not(.st-header-9) {
+		.mfp-content {
+			height: auto;
+			.mfp-close,
+			.mfp-close:active,
+			.mfp-close:focus {
+				right: -15px;
+				top: -15px;
+				opacity: 1;
+				background: #FFFFFF url(../../../../../../v2/images/svg/ico_close.svg) center center no-repeat;
+			}
+		}
+	}
 }
 .st-dot{
     height: 3px;

@@ -84,6 +84,10 @@ $class_wrapper          = 'woocommerce-checkout-review-order-table';
 								echo apply_filters( 'woocommerce_cart_item_name', sprintf( '<a href="%s" target="_blank">%s </a>', $product_url, $_product->get_title() ), $cart_item, $cart_item_key );
 							}
 
+							if ( $cart_item['st_booking_data']['st_booking_post_type'] == 'car_transfer' ) {
+								echo __( 'Transfer', 'traveler' );
+							}
+
 							// Meta data
 							echo wc_get_formatted_cart_item_data( $cart_item );
 

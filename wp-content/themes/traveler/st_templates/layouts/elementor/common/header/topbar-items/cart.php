@@ -45,7 +45,7 @@ if($st_is_woocommerce_checkout and function_exists('WC')){
                     $_product   = apply_filters( 'woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key );
 			        $product_id = apply_filters( 'woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key );
 
-                    $post_id = (int) get_post_meta($_product->get_id(), '_st_booking_id', true );
+                    $post_id = (int) $cart_item['st_booking_data']['st_booking_id'];
 
                     $post_title = $_product->get_title();
                     if( get_post_type( $post_id ) == 'st_hotel' ){
@@ -69,7 +69,14 @@ if($st_is_woocommerce_checkout and function_exists('WC')){
                             </div>
                             <div class="media-body  ms-3">
                                 <?php
-                                if( get_post_type( $post_id ) == 'st_hotel '):
+								if ( $cart_item['st_booking_data']['st_booking_post_type'] == 'car_transfer' ) :
+									$room_id = (int) get_post_meta( $_product->ID, 'room_id', true );
+                                    ?>
+                                    <h4 class="media-heading">
+										<?= __( 'Transfer: ', 'traveler' ) ?>
+										<a class="st-link c-main" href="<?php echo get_the_permalink($room_id) ?>"><?php echo esc_html($post_title); ?></a>
+                                    </h4>
+								<?php elseif( get_post_type( $post_id ) == 'st_hotel '):
                                     $room_id = (int) get_post_meta( $_product->ID, 'room_id', true );
                                     ?>
                                     <h4 class="media-heading"><a class="st-link c-main"
@@ -200,7 +207,7 @@ if($st_is_woocommerce_checkout and function_exists('WC')){
                                     </div>
                                 <?php endif; ?>
 
-                                <div class="price-wrapper"><?php echo __('Pricee', 'traveler') ;?>:
+                                <div class="price-wrapper"><?php echo __('Price', 'traveler') ;?>:
                                     <span class="price"><?php echo TravelHelper::format_money($price); ?></span>
                                 </div>
                             </div>

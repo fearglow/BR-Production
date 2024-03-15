@@ -632,9 +632,7 @@ $tour_external_booking_link = get_post_meta( $post_id, 'st_tour_external_booking
                                     </div>
 		                        <?php } ?>
                                 <!-- End Tour Package -->
-                            <?php
-                            if ( isset( $new_layout ) && $new_layout == 'classic' ) :
-                                ?>
+
                                 <div class="guest_name_input hidden mb15 mt10" data-placeholder="<?php esc_html_e('Guest %d name','traveler') ?>" data-hide-children="<?php echo get_post_meta($post_id,'disable_children_name',true) ?>" data-hide-infant="<?php echo get_post_meta($post_id,'disable_infant_name',true) ?>">
                                     <label ><strong><?php esc_html_e('Guest Name','traveler') ?></strong> <span class="required">*</span></label>
                                     <div class="guest_name_control">
@@ -667,8 +665,9 @@ $tour_external_booking_link = get_post_meta( $post_id, 'st_tour_external_booking
                                         </div>
                                     </script>
                                 </div>
-                                <?php
-                            endif; ?>
+
+
+
                             <input type="hidden" name="adult_price" id="adult_price">
                             <input type="hidden" name="child_price" id="child_price">
                             <input type="hidden" name="infant_price" id="infant_price">

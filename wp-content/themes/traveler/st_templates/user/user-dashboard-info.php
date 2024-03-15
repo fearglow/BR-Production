@@ -178,15 +178,12 @@ $currency = TravelHelper::get_current_currency('symbol');
             <div class="head_control">
                 <div class="head_time">
                     <span class="btn_single_all_time"><?php _e("All Time",'traveler') ?></span>
-                 <span class="btn_show_month_by_year" data-title="<?php _e("View",'traveler') ?>" data-loading="<?php _e("Loading...",'traveler') ?>" data-post-type="<?php echo esc_html($post_type) ?>" data-year="<?php echo esc_html($_custom_date['y']) ?>" href="javascript:;">
+                 	<span class="btn_show_month_by_year" data-title="<?php _e("View",'traveler') ?>" data-loading="<?php _e("Loading...",'traveler') ?>" data-post-type="<?php echo esc_html($post_type) ?>" data-year="<?php echo esc_html($_custom_date['y']) ?>" href="javascript:;">
                         <?php echo esc_html($_custom_date['y']) ?>
-                 </span>
-                <span class="active">
-                     <?php
-                     $dt = DateTime::createFromFormat('!m', $_custom_date['m']);
-                     echo esc_html($dt->format('F'))
-                     ?>
-                </span>
+                 	</span>
+					<span class="active">
+						<?php echo date_i18n( 'F', strtotime( $start ) ); ?>
+					</span>
                 </div>
             </div>
         </div>

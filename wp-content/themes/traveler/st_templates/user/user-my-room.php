@@ -46,15 +46,18 @@
 
     $args = array(
         'post_type' => 'hotel_room',
-        'post_status'=>'publish , draft , trash',
-        'author'=>$author,
-        'posts_per_page'=>10,
+        'post_status' => 'publish , draft , trash',
+        'author' => $author,
+        'posts_per_page' => 10,
         's' => $search,
-        'paged'=>$paged,
+        'paged' => $paged,
         'orderby'        => 'title',
         'order'          => 'asc',
+		'search_prod_title' => $search,
     );
-    $query=new WP_Query($args);
+	add_filter( 'posts_where', 'title_filter', 10, 2 );
+    $query = new WP_Query($args);
+	remove_filter( 'posts_where', 'title_filter', 10, 2 );
     if ( $query->have_posts() ) {
         while ($query->have_posts()) {
             $query->the_post();
@@ -64,6 +67,15 @@
         echo '<h1>'.st_get_language('no_room').'</h1>';
     };
     wp_reset_postdata();
+
+
+	function title_filter( $where, $wp_query ){
+		global $wpdb;
+		if ( $search_term = $wp_query->get( 'search_prod_title' ) ) {
+			$where .= ' AND ' . $wpdb->posts . '.post_title LIKE \'%' . esc_sql( $wpdb->esc_like( $search_term ) ) . '%\'';
+		}
+		return $where;
+	}
 ?>
 </ul>
 <div class="pull-left">

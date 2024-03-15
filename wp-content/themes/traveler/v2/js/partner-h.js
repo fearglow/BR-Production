@@ -572,7 +572,7 @@ jQuery(function($) {
             this.fullCalendarOptions = {
                 initialView: 'dayGridMonth',
                 firstDay: 1,
-                locale: 'ar',
+                locale: st_params.locale_fullcalendar,
                 timeZone: st_timezone.timezone_string,
                 customButtons: {
                     reloadButton: {
@@ -912,6 +912,7 @@ jQuery(function($) {
                 placeholder: me.data('placeholder'),
                 minimumInputLength:2,
                 multiple: true,
+				dropdownCssClass: 'partner',
                 ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
                     url: ajaxurl,
                     dataType: 'json',
@@ -924,7 +925,7 @@ jQuery(function($) {
                             post_type:type_service_value
                         };
                     },
-                    results: function (data, params) {
+                    processResults: function (data, params) {
                         console.log('data', data);
                         return {
                           results: $.map(data.items, function(obj) {
@@ -941,6 +942,13 @@ jQuery(function($) {
             });
 			me.select2('data', preload_data )
 
+		}
+
+		try {
+			$("#st_upsell").select2('isOpen');
+			console.log('select2 v4.x');
+		} catch(e) {
+			console.log('select2 v3.x');
 		}
     }
 });

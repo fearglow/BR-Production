@@ -1,5 +1,12 @@
 body.page-template-template-user{
   background: #F5F7F9;
+  .select2-container--open .select2-dropdown--below.partner,
+  .select2-container--open .select2-dropdown--above.partner {
+	transform: translate(0, 32px);
+  }
+  .select2-container {
+	width: 100% !important;
+  }
 }
 .st-create-service{
   .st-header{
@@ -272,7 +279,7 @@ body.page-template-template-user{
 			margin-bottom: 10px;
 		}
 		.select2-container {
-			width: 100%;
+			width: 100% !important;
 			.select2-choice {
 				padding: 5px 10px;
 				height: 40px;
@@ -350,6 +357,11 @@ body.page-template-template-user{
         background: #fff url(../images/arr_down.png) center right 10px no-repeat !important;
         background-size: 10px 10px !important;
       }
+	  .description {
+		font-style: italic;
+		margin-bottom: 20px;
+		font-size: 13px;
+	  }
     }
   }
 }

@@ -22,9 +22,9 @@ $url=st_get_link_with_search(get_permalink($post_translated),array('start','date
                     $is_featured = get_post_meta($post_translated, 'is_featured', true);
                     if ($is_featured == 'on') { ?>
                         <div class="featured">
-                            <?php 
+                            <?php
                                 if(!empty(st()->get_option('st_text_featured', ''))){
-                                    echo esc_html(st()->get_option('st_text_featured', ''));
+                                    echo wp_kses_post(st()->get_option('st_text_featured', ''));
                                 } else {?>
                                     <?php echo esc_html__('Featured', 'traveler') ?>
                                 <?php }
@@ -34,7 +34,7 @@ $url=st_get_link_with_search(get_permalink($post_translated),array('start','date
                 <?php if(!empty( $info_price['discount'] ) and $info_price['discount']>0 and $info_price['price_new'] >0) { ?>
                     <?php echo STFeatured::get_sale($info_price['discount']); ?>
                 <?php } ?>
-                
+
             </div>
             <?php if (is_user_logged_in()) { ?>
                 <?php $data = STUser_f::get_icon_wishlist(); ?>
@@ -62,7 +62,7 @@ $url=st_get_link_with_search(get_permalink($post_translated),array('start','date
         <div class="content-item">
             <?php if ($address) { ?>
                 <div class="sub-title st-address d-flex align-items-center" itemprop="location" itemscope itemtype="https://schema.org/Place">
-                    <span itemprop="itinerary" itemscope itemtype="https://schema.org/ItemList"> 
+                    <span itemprop="itinerary" itemscope itemtype="https://schema.org/ItemList">
                         <span itemprop="streetAddress"> <i class="stt-icon-location1"></i> <?php echo esc_html($address); ?></span>
                     </span>
                 </div>
@@ -83,17 +83,17 @@ $url=st_get_link_with_search(get_permalink($post_translated),array('start','date
             </div>
             <div class="event-date d-none" itemprop="startDate" content="<?php echo date("Y-m-d H:i:s");?>"><?php echo date("Y-m-d H:i:s");?></div>
             <div class="section-footer">
-               
+
                 <div class="price-wrapper price-wrapper-tour d-flex align-items-end justify-content-between">
                     <span class="price-tour">
                         <span class="price d-flex justify-content-around flex-column"><?php echo STActivity::get_price_html(get_the_ID(),false, '',  'sale-top', false); ?></span>
                     </span>
-                    <?php 
+                    <?php
                         if(!empty($duration)){ ?>
                             <span class="unit"><?php echo TravelHelper::getNewIcon('time-clock-circle-1', '#5E6D77', '16px', '16px'); ?><?php echo esc_html($duration); ?></span>
                         <?php }
                     ?>
-                    
+
                 </div>
             </div>
         </div>

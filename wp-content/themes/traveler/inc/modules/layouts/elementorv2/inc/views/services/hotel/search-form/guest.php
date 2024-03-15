@@ -22,17 +22,17 @@ $child_max = st()->get_option('hotel_max_child', 14);
                     'guest' => esc_attr__('guest', 'traveler'),
                     'guests' => esc_attr__('guests', 'traveler')
                 ])); ?>">
-                <?php 
+                <?php
                     if(!empty($adult_number) || !empty($room_num_search)){
-                        echo sprintf (_n( '%s guest', '%s guests', (intval($adult_number + $child_number)), 'traveler' ), ( intval($adult_number + $child_number) )) .',';
+                        echo sprintf (_n( '%s guest', '%s guests', (intval($adult_number + $child_number)), 'traveler' ), ( intval($adult_number + $child_number) )) .', ';
                         echo sprintf (_n( '%s room', '%s rooms', (intval($room_num_search)), 'traveler' ), ( intval($room_num_search) ));
                     } else {
                         echo esc_html__('Add guests and rooms', 'traveler');
                     }
                 ?>
-                
-                
-                
+
+
+
                 </span>
             </div>
         </div>
@@ -69,7 +69,7 @@ $child_max = st()->get_option('hotel_max_child', 14);
             </div>
         </li>
     </ul>
-    <?php 
+    <?php
     if(get_post_meta(get_the_ID(), 'disable_adult_name', true) == 'off'){ ?>
         <div class="guest_name_input d-none"
             data-placeholder="<?php echo esc_html__('Guest %d name', 'traveler') ?>"

@@ -147,7 +147,16 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 			                        $rental_name = (intval($rental_id) > 0) ? get_the_title($rental_id) : "";
 
 			                    ?>
-			                    <input id="rental_id" type="hidden" name="item_id" value="<?php echo esc_attr($rental_id); ?>" data-post-type="st_rental" class="form-control custom-form-control st_post_select_ajax " data-pl-name="<?php echo esc_attr($rental_name); ?>" data-user-id="<?php echo get_current_user_id(); ?>">
+								<select id="rental_id"
+									type="hidden"
+									name="item_id"
+									value="<?php echo esc_attr($rental_id); ?>"
+									data-post-type="st_rental"
+									class="form-control custom-form-control st_post_select_ajax "
+									data-pl-name="<?php echo esc_attr($rental_name); ?>"
+									data-user-id="<?php echo get_current_user_id(); ?>"
+								>
+								</select>
 		      				</div>
 	      				</div>
 	      			</div>
@@ -207,7 +216,7 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 								<div id="required_name_html">
 
 							</div>
-								
+
 							</div>
 						</div>
       				</div>
@@ -264,7 +273,7 @@ wp_enqueue_script( 'bootstrap-datepicker.js' ); wp_enqueue_script( 'bootstrap-da
 											});
 										</script>
 									<?php } ?>
-									
+
 								</div>
 							</div>
 						</div>

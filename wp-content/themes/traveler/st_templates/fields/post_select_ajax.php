@@ -1,9 +1,9 @@
 <?php
-$post_id = $_GET['id'] ?? '';
+$post_id        = $_GET['id'] ?? '';
 $list_services  = st_listOfServiceSelect();
 $list_items     = get_post_meta( $post_id, 'st_upsell', true );
 $data_list_item = [];
-if ( !empty( $list_items['list-item'] ) ) {
+if ( ! empty( $list_items['list-item'] ) ) {
 	foreach ( $list_items['list-item'] as $list_item ) {
 		$data_list_item[] = [
 			'id'   => $list_item,
@@ -12,6 +12,17 @@ if ( !empty( $list_items['list-item'] ) ) {
 	}
 }
 $data_list_item = json_encode( $data_list_item );
+
+
+$value_option = '';
+if ( ! empty( $list_items['list-item'] ) ) {
+	ob_start();
+	foreach ( $list_items['list-item'] as $id_post ) { ?>
+		<option selected="selected" value="<?php echo esc_attr( $id_post ); ?>"><?php echo get_the_title( $id_post ); ?></option>
+		<?php
+	}
+	$value_option = @ob_get_clean();
+}
 
 ?>
 <div class="form-group st-field-<?php echo esc_attr( $data['type'] ); ?>">
@@ -35,14 +46,18 @@ $data_list_item = json_encode( $data_list_item );
 		</div>
 		<div class="format-setting-inner">
 			<div class="option-tree-ui-post_select_ajax-input-wrap">
-				<input
+				<select
+					multiple
 					id="st_upsell"
 					class='upsell_select_ajax'
 					data-list="<?= esc_attr( $data_list_item ) ?>"
-					data-placeholder="<?= __('Select items for Upsell', 'traveler') ?>"
+					data-placeholder="<?= __( 'Select items for Upsell', 'traveler' ) ?>"
 					data-post-type=''
 					type=hidden
-					name='list-item'>
+					name='list-item[]'
+				>
+				<?php echo $value_option ?>
+				</select>
 			</div>
 		</div>
 	</div>

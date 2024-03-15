@@ -23,6 +23,13 @@ $sc = STInput::get('sc');
 ?>
 <div class="form-group st-field-<?php echo esc_attr($data['type']); ?> st-partner-field" data-condition="<?php echo esc_attr($condition); ?>" data-operator="<?php echo esc_attr($operator); ?>">
     <label for="<?php echo 'st-field-' . esc_attr($data['name']); ?>"><?php echo balanceTags($data['label'] . ' ' . $require_text); ?></label>
+
+	<?php if ( !empty( $data['desc'] ) ) : ?>
+	<div class="description">
+		<?php echo $data['desc'] ?>
+	</div>
+	<?php endif; ?>
+
     <?php
     if(!empty($data['fields'])){
         echo '<div class="item origin"><div class="listitem-title">'.__('Add new item', 'traveler').'</div><div class="del"></div><div class="row">';
@@ -205,7 +212,7 @@ $sc = STInput::get('sc');
         }
     }
     ?>
-    <div class="add-item">
+    <div class="add-item fasf">
         <?php
             if(isset($data['text_add']) && !empty($data['text_add'])){
                 echo esc_html($data['text_add']);

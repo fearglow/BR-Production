@@ -41,13 +41,21 @@ $price_total_with_tax = STPrice::getTotalPriceWithTaxInOrder($total_order,$order
     </div>
 </div>
 <?php
+
+$item = get_post_meta($order_id, 'st_cart_info', true);
+$item = $item[$service_id];
+$price_with_tax = (float)$item['data']['price_with_tax'];
+$price_with_tax -= $coupon_price;
+$total_price = 0;
+
 if(is_array($deposit_status) && !empty($deposit_status['type']) && floatval($deposit_status['amount']) > 0){
+	$total_price = $deposit_price;
     ?>
     <?php if(!empty($price_total_with_tax)){ ?>
         <div class="col-md-12">
             <strong><?php esc_html_e("Total: ",'traveler') ?></strong>
             <div class="pull-right">
-                <strong><?php echo TravelHelper::format_money($price_total_with_tax); ?></strong>
+                <strong><?php echo TravelHelper::format_money($price_with_tax); ?></strong>
             </div>
         </div>
     <?php } ?>
@@ -59,6 +67,7 @@ if(is_array($deposit_status) && !empty($deposit_status['type']) && floatval($dep
     </div>
     <?php
     if(!empty($booking_fee_price)){
+		$total_price = $total_price + $booking_fee_price;
         ?>
         <div class="col-md-12">
             <strong><?php esc_html_e("Fee: ",'traveler') ?></strong>
@@ -70,19 +79,13 @@ if(is_array($deposit_status) && !empty($deposit_status['type']) && floatval($dep
     <div class="col-md-12">
         <strong><?php esc_html_e("Pay Amount: ",'traveler') ?></strong>
         <div class="pull-right">
-            <strong><?php echo TravelHelper::format_money($pay_amount); ?></strong>
+            <strong><?php echo TravelHelper::format_money($total_price); ?></strong>
         </div>
     </div>
     <?php
 }else{
-    ?>
-    <div class="col-md-12">
-        <strong><?php esc_html_e("Total: ",'traveler') ?></strong>
-        <div class="pull-right">
-            <strong><?php echo TravelHelper::format_money($price_total_with_tax); ?></strong>
-        </div>
-    </div>
-    <?php if(!empty($booking_fee_price)){
+    if(!empty($booking_fee_price)){
+		$price_with_tax = $price_with_tax + $booking_fee_price;
         ?>
         <div class="col-md-12">
             <strong><?php esc_html_e("Fee: ",'traveler') ?></strong>
@@ -94,7 +97,7 @@ if(is_array($deposit_status) && !empty($deposit_status['type']) && floatval($dep
     <div class="col-md-12">
         <strong><?php esc_html_e("Pay Amount: ",'traveler') ?></strong>
         <div class="pull-right">
-            <strong><?php echo TravelHelper::format_money($pay_amount); ?></strong>
+            <strong><?php echo TravelHelper::format_money($price_with_tax); ?></strong>
         </div>
     </div>
     <?php

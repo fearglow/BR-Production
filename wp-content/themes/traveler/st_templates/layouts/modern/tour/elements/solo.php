@@ -16,12 +16,11 @@ if (empty($layout))
     $layout = '';
 
 $result_string = balanceTags(STTour::get_instance()->get_result_string());
-?>  
+?>
 <div class="col-lg-8 col-md-8">
-    <div class="st-left">
-    <h2 class="search-string modern-result-string" id="modern-result-string"><?php echo balanceTags($result_string); ?> <div id="btn-clear-filter" class="btn-clear-filter" style="display: none"><?php echo __('Clear filter', 'traveler'); ?></div> </h2>
-    </div>
-    
+
+	<?php echo st()->load_template('layouts/modern/hotel/elements/toolbar', '', array('style' => $style, 'format' => $format, 'layout' => $layout, 'service_text' => __('New tour', 'traveler'), 'post_type' => 'st_tours')); ?>
+
     <div id="modern-search-result" class="modern-search-result" data-layout="1">
         <?php echo st()->load_template('layouts/modern/common/loader', 'content'); ?>
         <?php

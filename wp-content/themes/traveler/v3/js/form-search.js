@@ -378,8 +378,8 @@
 
                 t.find('span').on("click", function () {
                     var $button = $(this);
-                    var min = $button.closest('.st-number-wrapper').find('.st-input-number').data('min');
-                    var max = $button.closest('.st-number-wrapper').find('.st-input-number').data('max');
+                    var min = parseFloat( $button.closest('.st-number-wrapper').find('.st-input-number').attr('data-min') );
+                    var max = parseFloat( $button.closest('.st-number-wrapper').find('.st-input-number').attr('data-max') );
 					if ( $( 'body' ).hasClass( 'single-hotel_room' ) ) {
 						numberButtonFuncRoom($button, min, max);
 					} else {

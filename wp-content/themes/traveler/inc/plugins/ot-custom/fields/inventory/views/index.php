@@ -63,7 +63,7 @@ wp_enqueue_script( 'bootstrap-datepicker-lang.js' );
         <div class="panel-room">
             <input class="input-price" type="number" name="input-room-number" value="" placeholder="">
             <input class="input-room-id" type="hidden" name="input-room-id" value="" placeholder="" min="0">
-            <a href="javascript: void(0);" class="button btn-add-number-room" style="margin-left: 10px;">Update <i class="fa fa-spin fa-spinner loading-icon"></i></a>
+            <a href="javascript: void(0);" class="button btn-add-number-room" style="margin-left: 10px;"><?= __('Update', 'travaler') ?> <i class="fa fa-spin fa-spinner loading-icon"></i></a>
             <span class="close">
                 <i class="fa fa-times"></i>
             </span>

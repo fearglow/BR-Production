@@ -19,7 +19,15 @@ $tour_package_custom = get_post_meta($post_id, 'tour_packages_custom', true);
                 </a>
             </td>
             <td data-name="<?php echo __('Hotel name', 'traveler'); ?>"><input type="text" class="hotel-name" value=""/></td>
-            <td data-name="<?php echo __('Hotel star', 'traveler'); ?>"><input type="number" min="0" max="5" step="0.5" class="hotel-star" value=""/></td>
+            <td data-name="<?php echo __('Hotel star', 'traveler'); ?>">
+				<select class="hotel-star">
+					<option value="1"><?php echo __('1', 'traveler'); ?></option>
+					<option value="2"><?php echo __('2', 'traveler'); ?></option>
+					<option value="3"><?php echo __('3', 'traveler'); ?></option>
+					<option value="4"><?php echo __('4', 'traveler'); ?></option>
+					<option value="5"><?php echo __('5', 'traveler'); ?></option>
+				</select>
+			</td>
             <td data-name="<?php echo __('Hotel price', 'traveler'); ?>"><input type="text" class="hotel-price" value=""/></td>
         </tr>
         <?php
@@ -34,8 +42,15 @@ $tour_package_custom = get_post_meta($post_id, 'tour_packages_custom', true);
                             </a>
                         </td>
                         <td data-name="<?php echo __('Hotel name', 'traveler'); ?>"><input type="text" class="hotel-name" value="<?php echo esc_html($v->hotel_name); ?>"/></td>
-                        <td data-name="<?php echo __('Hotel star', 'traveler'); ?>"><input type="number" min="0" max="5" step="0.5" class="hotel-star"
-                                   value="<?php echo esc_html($v->hotel_star); ?>"/></td>
+                        <td data-name="<?php echo __('Hotel star', 'traveler'); ?>">
+							<select class="hotel-star">
+								<option value="1" <?php selected( $v->hotel_star, 1 ); ?>><?php echo __('1', 'traveler'); ?></option>
+								<option value="2" <?php selected( $v->hotel_star, 2 ); ?>><?php echo __('2', 'traveler'); ?></option>
+								<option value="3" <?php selected( $v->hotel_star, 3 ); ?>><?php echo __('3', 'traveler'); ?></option>
+								<option value="4" <?php selected( $v->hotel_star, 4 ); ?>><?php echo __('4', 'traveler'); ?></option>
+								<option value="5" <?php selected( $v->hotel_star, 5 ); ?>><?php echo __('5', 'traveler'); ?></option>
+							</select>
+						</td>
                         <td data-name="<?php echo __('Hotel price', 'traveler'); ?>"><input type="text" class="hotel-price" value="<?php echo esc_html($v->hotel_price); ?>"/></td>
                     </tr>
                     <?php

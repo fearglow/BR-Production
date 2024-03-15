@@ -804,7 +804,7 @@ while ( have_posts() ) :
 
 								}
 								?>
-								<?php 
+								<?php
 									$list_badges = get_post_meta(get_the_ID(), 'list_badges', true);
 										if(!empty($list_badges)){
 											echo st()->load_template('layouts/modern/common/single/badge','', array('list_badges' => $list_badges));
@@ -948,8 +948,14 @@ while ( have_posts() ) :
 											<div class="right st-flex">
 												<?php echo TravelHelper::getNewIcon( 'thunder', '#FFAB53', '9px', '16px', false ); ?>
 												<span class="price">
-																<?php echo sprintf( esc_html__( 'from %s', 'traveler' ), STTour::get_price_html( get_the_ID() ) ); ?>
-															</span>
+													<?php
+													$info_price = STCars::get_info_price(get_the_ID(), strtotime($pickup_date), strtotime($dropoff_date));
+													$cars_price = $info_price['price'];
+													echo TravelHelper::format_money($cars_price);
+													?>
+												</span>
+												<span class="unit">/<?php echo strtolower(STCars::get_price_unit('label')) ?></span>
+
 											</div>
 										</div>
 									</div>

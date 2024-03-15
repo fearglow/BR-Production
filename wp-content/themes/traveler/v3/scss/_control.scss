@@ -1004,7 +1004,11 @@ button {
 @media (max-width: 767px) {
     .st-header-2 {
         header#header {
-            margin-bottom: -102px;
+			margin-bottom: 0;
+			height: auto;
+			.header i {
+				filter: brightness(0%);
+			}
         }
 
         .search-form-wrapper {
@@ -3238,7 +3242,7 @@ button {
             width: 100% !important;
             bottom: 0;
             background: #fff;
-            z-index: 888;
+            z-index: 999;
             display: none;
             overflow: scroll;
 

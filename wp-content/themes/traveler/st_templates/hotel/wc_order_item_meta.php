@@ -11,6 +11,10 @@ $format = TravelHelper::getDateFormat();
 
 $check_in     = $item_data['_st_check_in'];
 $check_out    = $item_data['_st_check_out'];
+if ( TravelHelper::getDateFormat() === 'd/m/Y' ) {
+	$check_in  = str_replace( '/', '-', $check_in );
+	$check_out = str_replace( '/', '-', $check_out );
+}
 $date_diff    = STDate::dateDiff( $check_in, $check_out );
 $number_room  = intval( $item_data['_st_room_num_search'] );
 $adult_number = intval( $item_data['_st_adult_number'] );
